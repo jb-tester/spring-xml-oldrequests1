@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="dummy" class="spelInProps.Dummy">
+        <property name="myprops">
+            <props>
+                <prop key="key1">#{@dummy2.strlist[0]}</prop>
+                <prop key="key2">#{@dummy2.str}</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="dummy2" class="spelInProps.Dummy2">
+        <property name="str">
+            <value>#{@dummy21.str}</value>
+        </property>
+        <property name="strlist">
+            <list>
+                <value>#{@dummy21.str2}</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="dummy21" class="spelInProps.Dummy2">
+        <property name="str" value="dummy_test1"/>
+        <property name="str2" value="dummy_test2"/>
+    </bean>
+</beans>
